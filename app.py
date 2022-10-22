@@ -61,6 +61,7 @@ def post_vehiculo():#funcion de la pagina registrar un vehiculo
 @app.route('/stock/<codigo>', methods=['PUT'])
 def put_vehiculo(codigo):
     try:#el try es para que si hay un error no se caiga el programa
+        int(codigo)#se convierte el codigo a entero
         cursor = mysql.connection.cursor()#se usa para conectar con la base de datos
         sql = """UPDATE heroku_978ea61906c2949.vehiculos SET Nombre = '{0}', Modelo = '{1}', Tipo = '{2}', Caracteristica = '{3}', Cantidad = {4}, Precio = {5} WHERE Id_vehiculo = '{6}' """.format(request.json['Nombre'], request.json['Modelo'], request.json['Tipo'], request.json['Caracteristica'], request.json['Cantidad'], request.json['Precio'], codigo)
         cursor.execute(sql)#se ejecuta la consulta
@@ -73,6 +74,7 @@ def put_vehiculo(codigo):
 @app.route('/stock/<codigo>',methods=['DELETE'])
 def delete_vehiculo(codigo):#funcion de la pagina eliminar un vehiculo
     try:#el try es para que si hay un error no se caiga el programa
+        int(codigo)#se convierte el codigo a entero
         cursor = mysql.connection.cursor()# el cursor es para conectar con la base de datos
         sql = "DELETE FROM heroku_978ea61906c2949.vehiculos Where Id_vehiculo = {0}  ".format(codigo)#se crea la consulta
         cursor.execute(sql)#se ejecuta la consulta
