@@ -24,7 +24,6 @@ mysql==0.0.3
 mysql-connector-python==8.0.31
 mysqlclient==2.1.1
 packaging==21.3
-pandas==1.4.3
 Pillow==9.2.0
 pipenv==2022.8.5
 platformdirs==2.5.2
